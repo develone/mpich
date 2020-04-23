@@ -36,3 +36,47 @@ svd_rgb/src/mythread.c
 +               th2.n = 512;
 +               th2.p = 512;
 +               th2.q = 512;
+
+less machinefile
+mypi3-15:4
+mypi3-11:4
+Need to update 512 X 512 master compiled 
+rsync -avl --delete mpich-3.3.2 mypi3-11:~/
+
+Need to transfer input images:
+scp *.pgm mypi3-11:~/
+
+time mpiexec -f machinefile -n 8 mpich-3.3.2/examples/hellow
+Hello world from process 4 of 8
+Hello world from process 5 of 8
+Hello world from process 6 of 8
+Hello world from process 7 of 8
+Hello world from process 0 of 8
+Hello world from process 1 of 8
+Hello world from process 2 of 8
+Hello world from process 3 of 8
+/home/devel
+/home/devel
+/home/devel
+/home/devel
+/home/devel
+/home/devel
+/home/devel
+/home/devel
+
+First 4 jobs finished quickly.
+And results were displayed. These must of been running RPi4B with 4Gb.
+
+real	9m51.274s
+user	13m38.780s
+sys	0m1.434s
+
+1 job RPi4 4Gb
+real	1m21.622s
+user	1m21.310s
+sys	0m0.242s
+
+1 job RPi3B+ 1Gb
+real	6m35.187s
+user	6m34.855s
+sys	0m0.158s
